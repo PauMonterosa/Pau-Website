@@ -31,7 +31,7 @@ Access the full manuscript in Catalan. Optimized for technical review.
 
 <div style="text-align: center; margin: 2.5rem 0;">
   <a href="/static/Estat_Solid.pdf" target="_blank" class="download-button-solid">
-    <img src="/images/folder-solid-state.png" style="width: 50px; vertical-align: middle; margin-right: 15px;">
+    <img src="images/folder-solid-state.png" style="width: 50px; vertical-align: middle; margin-right: 15px;">
     DOWNLOAD_CAT_MANUSCRIPT.log
   </a>
 </div>

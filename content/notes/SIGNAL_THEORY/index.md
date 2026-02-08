@@ -27,7 +27,7 @@ The curriculum is divided into two major technical blocks. Select a volume to ac
 *Chapters 1-4: Classification of Systems, LTI Analysis, Z-Transform, and DFT.*
 <div style="margin: 1rem 0;">
   <a href="/static/Teoria_del_Senyal_Vol1.pdf" target="_blank" class="download-button-signal">
-    <img src="/images/folder-signal-theory.png" style="width: 40px; vertical-align: middle; margin-right: 10px;">
+    <img src="images/folder-signal-theory.png" style="width: 40px; vertical-align: middle; margin-right: 10px;">
     ACCESS_VOL_I.sys
   </a>
 </div>
@@ -36,7 +36,7 @@ The curriculum is divided into two major technical blocks. Select a volume to ac
 *Chapters 5-7: Statistical Estimation, Cramér-Rao Bound, Wiener Filtering, and Adaptive LMS.*
 <div style="margin: 1rem 0;">
   <a href="/static/Teoria_del_Senyal_Vol2.pdf" target="_blank" class="download-button-signal">
-    <img src="/images/folder-signal-theory.png" style="width: 40px; vertical-align: middle; margin-right: 10px;">
+    <img src="images/folder-signal-theory.png" style="width: 40px; vertical-align: middle; margin-right: 10px;">
     ACCESS_VOL_II.sys
   </a>
 </div>

@@ -23,7 +23,7 @@ Access the full formal derivation and exercise set in PDF format.
 
 <div style="text-align: center; margin: 2.5rem 0;">
   <a href="/static/ELECTROMAGNETISM.pdf" target="_blank" class="download-button">
-    <img src="/images/folder-em.png" style="width: 50px; vertical-align: middle; margin-right: 15px;">
+    <img src="images/folder-em.png" style="width: 50px; vertical-align: middle; margin-right: 15px;">
     ACCESS_FULL_PDF.log
   </a>
 </div>
