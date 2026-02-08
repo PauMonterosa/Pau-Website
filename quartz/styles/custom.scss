@@ -1,3 +1,263 @@
 @use "./base.scss";
 
 // put your custom CSS here!
+/* Mantenemos el fondo negro global */
+/* 1. Fondo negro para toda la web */
+body {
+  background-color: #000000 !important;
+}
+
+/* 2. Estilo específico para la página de inicio */
+[data-slug="index"] {
+  /* Ocultamos la fecha de arriba (.content-meta) y el resto de componentes de Quartz */
+  .left, .right, footer, header, .backlinks, .graph, .breadcrumb-container, #toc--table-of-contents, .content-meta {
+    display: none !important;
+  }
+
+  /* AQUÍ ESTÁ EL TÍTULO QUE TIENES QUE EDITAR */
+  .article-title {
+    /* Estilo visual (Neón) */
+    font-family: 'Orbitron', 'Segoe UI', Roboto, sans-serif !important;
+    font-size: clamp(1.5rem, 7vw, 4rem) !important;
+    color: #fff !important;
+    text-align: center !important;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    text-shadow: 
+      0 0 5px #fff,
+      0 0 10px #fff,
+      0 0 20px #ff00de, 
+      0 0 40px #ff00de, 
+      0 0 70px #00d2ff, 
+      0 0 100px #00d2ff !important;
+    animation: flicker 3s infinite alternate;
+
+    /* EL TRUCO PARA EL CENTRADO TOTAL */
+    position: fixed !important;   /* Flota sobre la pantalla */
+    top: 50% !important;          /* Baja al centro vertical */
+    left: 50% !important;         /* Va al centro horizontal */
+    transform: translate(-50%, -50%) !important; /* Se auto-centra perfectamente */
+    width: 100vw !important;      /* Usa todo el ancho */
+    margin: 0 !important;
+    z-index: 9999 !important;
+  }
+}
+
+/* Animación del parpadeo */
+@keyframes flicker {
+  0%, 19%, 22%, 62%, 64%, 70%, 100% { opacity: 1; }
+  20%, 21%, 63%, 65%, 69% { opacity: 0.5; }
+}
+
+/* Contenedor del menú debajo del título */
+  .menu-container {
+    position: fixed;
+    top: 65%; /* Lo ponemos un poco por debajo del título centrado */
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 10000;
+  }
+
+  /* El botón principal */
+  .menu-button {
+    background: transparent;
+    border: 2px solid #00d2ff;
+    color: #00d2ff;
+    padding: 10px 25px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    cursor: cell !important;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 210, 255, 0.3);
+  }
+
+  .menu-button:hover {
+    background: #00d2ff;
+    color: #000;
+    box-shadow: 0 0 20px #00d2ff;
+  }
+
+  /* El contenido desplegable (oculto por defecto) */
+  .menu-content {
+    display: none;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.9);
+    border: 1px solid #ff00de;
+    margin-top: 10px;
+    box-shadow: 0 0 15px #ff00de;
+  }
+
+  /* Mostrar al pasar el ratón por el contenedor */
+  .menu-container:hover .menu-content {
+    display: flex;
+  }
+
+  /* Los enlaces del menú */
+  .menu-content a {
+    color: #fff !important;
+    padding: 12px 20px;
+    text-decoration: none !important;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.8rem;
+    border-bottom: 1px solid rgba(255, 0, 222, 0.2);
+    transition: background 0.3s;
+  }
+
+  .menu-content a:hover {
+    background: rgba(255, 0, 222, 0.2);
+    color: #ff00de !important;
+  }
+ /* --- ICONOS DE CARPETA PIXEL ART CON EFECTO 3D --- */
+/* Contenedor de la cuadrícula */
+.modules-pixel-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+  justify-items: center;
+}
+
+/* Estilo de cada carpeta */
+.pixel-folder-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none !important;
+  transition: transform 0.2s ease;
+}
+
+.pixel-folder-icon img {
+  width: 180px; /* Tamaño ideal para ver el pixelart */
+  height: auto;
+  image-rendering: pixelated; /* Mantiene la nitidez del píxel */
+  filter: drop-shadow(0 0 5px rgba(0, 210, 255, 0.3));
+}
+
+.pixel-folder-icon span {
+  margin-top: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: #00d2ff;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+/* Efecto al pasar el ratón */
+.pixel-folder-icon:hover {
+  transform: translateY(-5px) scale(1.05);
+}
+
+.pixel-folder-icon:hover img {
+  filter: drop-shadow(0 0 15px #ff00de); /* Brillo rosa al seleccionar */
+}
+
+.pixel-folder-icon:hover span {
+  color: #ff00de;
+  text-shadow: 0 0 5px #ff00de;
+} 
+
+.download-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 15px 30px;
+  background: rgba(13, 13, 13, 0.9);
+  border: 2px solid #00d2ff;
+  color: #00d2ff !important;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: bold;
+  text-decoration: none !important;
+  border-radius: 8px;
+  box-shadow: 4px 4px 0px #00d2ff;
+  transition: all 0.2s ease;
+}
+
+.download-button:hover {
+  background: #ff00de;
+  border-color: #ff00de;
+  color: #fff !important;
+  box-shadow: 0px 0px 20px rgba(255, 0, 222, 0.6);
+  transform: translate(-2px, -2px);
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  text-decoration: none !important;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    background: rgba(255, 0, 222, 0.05);
+    border-color: #ff00de;
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 10px 20px rgba(255, 0, 222, 0.2);
+
+    .project-icon img {
+      transform: rotateY(10deg) rotateX(10deg);
+      filter: drop-shadow(0 0 10px #ff00de);
+    }
+  }
+}
+
+.project-icon {
+  flex-shrink: 0;
+  margin-right: 1rem;
+  perspective: 500px;
+
+  img {
+    width: 85px;
+    height: auto;
+    image-rendering: pixelated;
+    transition: transform 0.3s ease;
+  }
+}
+
+.project-info {
+  display: flex;
+  flex-direction: column;
+
+  .file-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: bold;
+    color: var(--secondary);
+    font-size: 1rem;
+  }
+
+  .file-desc {
+    font-size: 0.8rem;
+    color: var(--gray);
+    margin: 4px 0;
+    line-height: 1.2;
+  }
+
+  .file-status {
+    font-size: 0.7rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    
+    &.stable { color: #00ff00; }
+    &.encrypted { color: #ff00de; opacity: 0.6; }
+  }
+}
+
+/* Efecto para proyectos bloqueados */
+.project-card.locked {
+  cursor: not-allowed;
+  filter: grayscale(1);
+  opacity: 0.7;
+}
