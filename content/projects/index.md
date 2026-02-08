@@ -13,7 +13,7 @@ This directory contains finalized technical projects, research papers, and hardw
 
   <a href="/projects/TakeDPulse" class="project-card">
     <div class="project-icon">
-      <img src="/images/TakeDPulse.png" alt="TakeDPulse Icon">
+      <img src="images/TakeDPulse.png" alt="TakeDPulse Icon">
     </div>
     <div class="project-info">
       <span class="file-name">TakeDPulse.exe</span>
@@ -24,7 +24,7 @@ This directory contains finalized technical projects, research papers, and hardw
 
   <a href="#" class="project-card locked">
     <div class="project-icon">
-      <img src="/images/folder-locked.png" style="opacity: 0.3;" alt="Locked">
+      <img src="images/folder-locked.png" style="opacity: 0.3;" alt="Locked">
     </div>
     <div class="project-info">
       <span class="file-name">Classified_Research.dat</span>

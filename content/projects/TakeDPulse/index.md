@@ -47,7 +47,7 @@ Explore the full 19-page engineering report, featuring circuit schematics, signa
 
 <div style="text-align: center; margin: 2.5rem 0;">
   <a href="/static/TakeDPulse_Report.pdf" target="_blank" class="download-button">
-    <img src="/images/TakeDPulse.png" style="width: 85px; vertical-align: middle; margin-right: 15px;">
+    <img src="images/TakeDPulse.png" style="width: 85px; vertical-align: middle; margin-right: 15px;">
     OPEN_FULL_REPORT.log
   </a>
 </div>
