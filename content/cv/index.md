@@ -9,4 +9,4 @@ Sigue este enlace para descargar el archivo directamente: [Descargar PDF](./CV_P
     width="100%" 
     height="800px" 
     style="border: none;">
-</iframe>
+</iframe> 
