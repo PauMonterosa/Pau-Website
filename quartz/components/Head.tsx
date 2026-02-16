@@ -28,7 +28,6 @@ export default (() => {
     const baseDir = fileData.slug === "404" ? path : pathToRoot(fileData.slug!)
     const iconPath = joinSegments(baseDir, "static/icon.png")
 
-    // Url of current page
     const socialUrl =
       fileData.slug === "404" ? url.toString() : joinSegments(url.toString(), fileData.slug!)
 
@@ -106,29 +105,16 @@ export default (() => {
           }
         })}
 
-        {/* Halo cursor INLINE (sense rutes, sense problemes de subpath) */}
-        <script
+        {/* CSS inline (fons + halo). Quan ho tinguem estable, ho movem a custom.scss */}
+        <style
           dangerouslySetInnerHTML={{
             __html: `
-(() => {
-  const root = document.documentElement;
-  const set = (x, y) => {
-    root.style.setProperty("--halo-x", x + "px");
-    root.style.setProperty("--halo-y", y + "px");
-  };
-  window.addEventListener("mousemove", (e) => set(e.clientX, e.clientY), { passive: true });
-  window.addEventListener("touchmove", (e) => {
-    const t = e.touches && e.touches[0];
-    if (t) set(t.clientX, t.clientY);
-  }, { passive: true });
-})();
-            `.trim(),
-          }}
-        />
-        <style
-  dangerouslySetInnerHTML={{
-    __html: `
-:root { --halo-x: 50%; --halo-y: 50%; }
+:root {
+  --halo-x: 50%;
+  --halo-y: 50%;
+  --bg1: rgb(10,15,42);
+  --shift: 0%;
+}
 
 html::before{
   content:"";
@@ -136,12 +122,14 @@ html::before{
   inset:-25%;
   z-index:-9999;
   background:
-    radial-gradient(circle at 20% 25%, rgba(0,120,255,.85) 0%, rgba(0,0,0,0) 45%),
-    radial-gradient(circle at 85% 70%, rgba(0,210,255,.75) 0%, rgba(0,0,0,0) 48%),
+    radial-gradient(circle at calc(20% + var(--shift)) 25%, rgba(0,120,255,.85) 0%, rgba(0,0,0,0) 45%),
+    radial-gradient(circle at calc(85% - var(--shift)) 70%, rgba(0,210,255,.75) 0%, rgba(0,0,0,0) 48%),
     radial-gradient(circle at 55% 55%, rgba(120,0,255,.35) 0%, rgba(0,0,0,0) 55%),
-    radial-gradient(circle at 50% 50%, rgba(0,10,30,1) 0%, rgba(0,0,0,1) 70%);
-  filter: blur(120px);
+    radial-gradient(circle at 50% 50%, rgba(0,10,30,1) 0%, rgba(0,0,0,1) 70%),
+    linear-gradient(180deg, var(--bg1), rgba(0,0,0,1));
+  filter: blur(140px);
   opacity:.95;
+  transform: translateZ(0);
 }
 
 html::after{
@@ -157,15 +145,71 @@ html::after{
     rgba(0,0,0,.40);
 }
 
-/* clau: si el body té fons opac, tapa el background del html */
 html, body, #quartz-body, .page, main, article, .content, .center, .left, .right {
   background: transparent !important;
 }
-    `.trim(),
-  }}
-/>
+            `.trim(),
+          }}
+        />
 
+        {/* JS inline: halo cursor + scroll color shift */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+(() => {
+  const root = document.documentElement;
 
+  // cursor halo
+  const setHalo = (x, y) => {
+    root.style.setProperty("--halo-x", x + "px");
+    root.style.setProperty("--halo-y", y + "px");
+  };
+  window.addEventListener("mousemove", (e) => setHalo(e.clientX, e.clientY), { passive: true });
+  window.addEventListener("touchmove", (e) => {
+    const t = e.touches && e.touches[0];
+    if (t) setHalo(t.clientX, t.clientY);
+  }, { passive: true });
+
+  // scroll color shift
+  const lerp = (a, b, t) => a + (b - a) * t;
+
+  const colorAt = (t) => {
+    const palette = [
+      [10, 15, 42],  // deep blue
+      [26, 15, 42],  // violet
+      [42, 10, 20],  // warm dark
+      [10, 15, 42],  // back to blue
+    ];
+    const i = Math.min(palette.length - 2, Math.floor(t));
+    const f = t - i;
+    const c1 = palette[i];
+    const c2 = palette[i + 1];
+    return [
+      Math.round(lerp(c1[0], c2[0], f)),
+      Math.round(lerp(c1[1], c2[1], f)),
+      Math.round(lerp(c1[2], c2[2], f)),
+    ];
+  };
+
+  const onScroll = () => {
+    const max = document.body.scrollHeight - window.innerHeight;
+    const p = max > 0 ? window.scrollY / max : 0;
+
+    // nebula drift
+    root.style.setProperty("--shift", (p * 40) + "%");
+
+    // smooth color timeline
+    const t = p * 3;
+    const rgb = colorAt(t);
+    root.style.setProperty("--bg1", "rgb(" + rgb[0] + "," + rgb[1] + "," + rgb[2] + ")");
+  };
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+})();
+            `.trim(),
+          }}
+        />
       </head>
     )
   }

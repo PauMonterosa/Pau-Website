@@ -5,6 +5,15 @@
   --halo-y: 50%;
 }
 
+/* === SCROLL COLOR NEBULA BACKGROUND === */
+
+:root {
+  --bg1: #0a0f2a;
+  --bg2: #0b1d2a;
+  --bg3: #1a0f2a;
+  --shift: 0%;
+}
+
 html::before {
   content: "";
   position: fixed;
@@ -12,15 +21,16 @@ html::before {
   z-index: -9999;
 
   background:
-    radial-gradient(circle at 20% 25%, rgba(0, 120, 255, 0.85) 0%, rgba(0, 0, 0, 0) 45%),
-    radial-gradient(circle at 85% 70%, rgba(0, 210, 255, 0.75) 0%, rgba(0, 0, 0, 0) 48%),
-    radial-gradient(circle at 55% 55%, rgba(120, 0, 255, 0.35) 0%, rgba(0, 0, 0, 0) 55%),
-    radial-gradient(circle at 50% 50%, rgba(0, 10, 30, 1) 0%, rgba(0, 0, 0, 1) 70%);
+    radial-gradient(circle at calc(20% + var(--shift)) 25%, #0a6cff 0%, transparent 45%),
+    radial-gradient(circle at calc(80% - var(--shift)) 70%, #00d2ff 0%, transparent 48%),
+    radial-gradient(circle at 50% 55%, #6a00ff 0%, transparent 55%),
+    linear-gradient(180deg, var(--bg1), says var(--bg2), var(--bg3));
 
-  filter: blur(120px);
+  filter: blur(140px);
   opacity: 0.95;
-  transform: translateZ(0);
+  transition: background 0.2s linear;
 }
+
 
 html::after {
   content: "";
