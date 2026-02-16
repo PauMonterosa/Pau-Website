@@ -6,7 +6,7 @@ layout: layouts/resume.njk
 # Pau Monterosa
 > [!abstract] Professional Profile
 > Engineering Physics student at Universitat Politècnica de Catalunya with a focus on Biophysics and Signal Processing. I have practical experience in  data collection from the ALBA Synchrotron and a strong background and ambition in developing predictive models using Python and numerical solvers. My technical expertise spans from modeling biological systems to experimental fluid dynamics and optical systems , driven by an analytical mindset and experimental rigor.
-+
+
 
 ## Skills
 * [cite_start]**Programming:** Python, MATLAB/Simulink, C++, SQL.
