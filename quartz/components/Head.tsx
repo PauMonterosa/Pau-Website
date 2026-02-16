@@ -5,6 +5,7 @@ import { googleFontHref, googleFontSubsetHref } from "../util/theme"
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
 import { unescapeHTML } from "../util/escape"
 import { CustomOgImagesEmitterName } from "../plugins/emitters/ogImage"
+
 export default (() => {
   const Head: QuartzComponent = ({
     cfg,
@@ -39,8 +40,11 @@ export default (() => {
     return (
       <head>
         <title>{title}</title>
-        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet" />
-  
+        <link
+          href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap"
+          rel="stylesheet"
+        />
+
         <meta charSet="utf-8" />
         {cfg.theme.cdnCaching && cfg.theme.fontOrigin === "googleFonts" && (
           <>
@@ -52,6 +56,7 @@ export default (() => {
             )}
           </>
         )}
+
         <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossOrigin="anonymous" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -92,6 +97,7 @@ export default (() => {
         {js
           .filter((resource) => resource.loadTime === "beforeDOMReady")
           .map((res) => JSResourceToScriptElement(res, true))}
+
         {additionalHead.map((resource) => {
           if (typeof resource === "function") {
             return resource(fileData)
@@ -99,9 +105,30 @@ export default (() => {
             return resource
           }
         })}
+
+        {/* Halo cursor INLINE (sense rutes, sense problemes de subpath) */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+(() => {
+  const root = document.documentElement;
+  const set = (x, y) => {
+    root.style.setProperty("--halo-x", x + "px");
+    root.style.setProperty("--halo-y", y + "px");
+  };
+  window.addEventListener("mousemove", (e) => set(e.clientX, e.clientY), { passive: true });
+  window.addEventListener("touchmove", (e) => {
+    const t = e.touches && e.touches[0];
+    if (t) set(t.clientX, t.clientY);
+  }, { passive: true });
+})();
+            `.trim(),
+          }}
+        />
       </head>
     )
   }
 
   return Head
 }) satisfies QuartzComponentConstructor
+
