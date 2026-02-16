@@ -125,6 +125,8 @@ export default (() => {
             `.trim(),
           }}
         />
+        <meta name="debug-build" content="HALO-TEST-1" />
+
       </head>
     )
   }
