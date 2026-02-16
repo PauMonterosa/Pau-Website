@@ -44,6 +44,162 @@ html, body,
 #quartz-body {
   background: transparent !important;
 }
+/* === LANDING PAGE (index) === */
+
+[data-slug="index"] {
+  /* amaga coses “wiki” a la home */
+  .content-meta,
+  .breadcrumb-container,
+  #toc--table-of-contents,
+  .backlinks,
+  .graph,
+  footer,
+  .sidebar.left,
+  .sidebar.right {
+    display: none !important;
+  }
+
+  /* centra el contingut i dona aire */
+  .center {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 3.5rem 1.25rem 5rem 1.25rem;
+  }
+
+  article > h1 {
+    display: none; /* perquè ja tens el teu h1 al hero */
+  }
+}
+
+/* components visuals */
+.landing {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.hero {
+  padding: 2.25rem 1.5rem;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.subtitle {
+  margin-top: 0.75rem;
+  margin-bottom: 1.25rem;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.5;
+}
+
+.cta {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.65rem 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(0, 0, 0, 0.25);
+  color: rgba(255, 255, 255, 0.86) !important;
+  text-decoration: none !important;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.btn.primary {
+  background: rgba(0, 210, 255, 0.18);
+  border-color: rgba(0, 210, 255, 0.35);
+}
+
+.section h2 {
+  margin: 0 0 0.75rem 0;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.card {
+  padding: 1.25rem;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(10px);
+}
+
+.card p, .card li, .card span, .card a {
+  color: rgba(255, 255, 255, 0.78) !important;
+}
+
+.item-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.35rem;
+}
+
+.role {
+  color: rgba(255, 255, 255, 0.90);
+  font-weight: 700;
+}
+
+.date {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.place {
+  color: rgba(255, 255, 255, 0.70);
+  margin-bottom: 0.75rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.card.link {
+  cursor: pointer;
+}
+
+.proj-title {
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.92);
+  margin-bottom: 0.4rem;
+}
+
+.proj-desc {
+  color: rgba(255, 255, 255, 0.70);
+  line-height: 1.45;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.pill {
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(0, 0, 0, 0.22);
+  color: rgba(255, 255, 255, 0.80);
+  font-size: 0.9rem;
+}
 
 
 
