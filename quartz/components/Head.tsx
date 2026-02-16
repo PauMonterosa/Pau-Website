@@ -125,7 +125,46 @@ export default (() => {
             `.trim(),
           }}
         />
-        <meta name="debug-build" content="HALO-TEST-1" />
+        <style
+  dangerouslySetInnerHTML={{
+    __html: `
+:root { --halo-x: 50%; --halo-y: 50%; }
+
+html::before{
+  content:"";
+  position:fixed;
+  inset:-25%;
+  z-index:-9999;
+  background:
+    radial-gradient(circle at 20% 25%, rgba(0,120,255,.85) 0%, rgba(0,0,0,0) 45%),
+    radial-gradient(circle at 85% 70%, rgba(0,210,255,.75) 0%, rgba(0,0,0,0) 48%),
+    radial-gradient(circle at 55% 55%, rgba(120,0,255,.35) 0%, rgba(0,0,0,0) 55%),
+    radial-gradient(circle at 50% 50%, rgba(0,10,30,1) 0%, rgba(0,0,0,1) 70%);
+  filter: blur(120px);
+  opacity:.95;
+}
+
+html::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-9998;
+  pointer-events:none;
+  background:
+    radial-gradient(280px circle at var(--halo-x) var(--halo-y),
+      rgba(255,255,255,.22),
+      rgba(255,255,255,0) 65%),
+    rgba(0,0,0,.40);
+}
+
+/* clau: si el body té fons opac, tapa el background del html */
+html, body, #quartz-body, .page, main, article, .content, .center, .left, .right {
+  background: transparent !important;
+}
+    `.trim(),
+  }}
+/>
+
 
       </head>
     )
