@@ -62,10 +62,10 @@ src/
 public/
 ├── gradients/
 └── favicon.svg
-
+```
 ## Local Development
 
-###Requirements
+### Requirements
 
 - **Node.js 18** or higher
 - **npm** installed
@@ -75,11 +75,11 @@ public/
 
 ```bash
 npm install
-
+```
 ### Run the development server
 ```bash
 npm run dev
-
+```
 Then open:
 http://localhost:3000
 
@@ -88,7 +88,7 @@ To generate the production build:
 
 ```bash
 npm run build
-
+```
 ## Deployment
 This site is configured for **static export** with Next.js and deployed through **GitHub Pages** using GitHub Actions.
 The deployment flow is:
