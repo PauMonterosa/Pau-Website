@@ -1,6 +1,7 @@
 export const siteConfig = {
   name: 'Pau Monterosa',
   title: 'Pau Monterosa',
+  subtitle: 'Engineering Physics Student · UPC',
   description: 'Engineering Physics student focused on biophysics, signal processing and advanced instrumentation.',
   url: 'https://paumonterosa.github.io/Pau-Website/',
   email: 'paumonterosa@gmail.com',
@@ -11,4 +12,3 @@ export const siteConfig = {
     websiteLabel: 'paumonterosa.github.io',
   },
 }
-
