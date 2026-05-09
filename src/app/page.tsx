@@ -4,7 +4,8 @@ import dynamic from 'next/dynamic'
 import { PageWrapper } from '@/components/PageWrapper'
 import { HomePage } from '@/components/pages/HomePage'
 
-// dynamic pages (carrega només quan cal)
+const basePath = process.env.NODE_ENV === 'production' ? '/Pau-Website' : ''
+
 const AboutPage = dynamic(() => import('@/components/pages/AboutPage').then(m => m.AboutPage))
 const EducationPage = dynamic(() => import('@/components/pages/EducationPage').then(m => m.EducationPage))
 const ExperiencePage = dynamic(() => import('@/components/pages/ExperiencePage').then(m => m.ExperiencePage))
@@ -16,7 +17,7 @@ export default function Home() {
   const pages = [
     {
       id: 'home',
-      gradient: '/gradients/index.svg',
+      gradient: `${basePath}/gradients/index.svg`,
       glowColor: '#8f46db',
       isHome: true,
       content: (
@@ -32,7 +33,7 @@ export default function Home() {
       id: 'about',
       title: 'About Me',
       description: "Nice to meet you — I'm Pau.",
-      gradient: '/gradients/about.svg',
+      gradient: `${basePath}/gradients/about.svg`,
       glowColor: '#1de9ff',
       content: <AboutPage />,
     },
@@ -40,7 +41,7 @@ export default function Home() {
       id: 'education',
       title: 'Education',
       description: 'My academic background',
-      gradient: '/gradients/education.svg',
+      gradient: `${basePath}/gradients/education.svg`,
       glowColor: '#ff8c42',
       content: <EducationPage />,
     },
@@ -48,7 +49,7 @@ export default function Home() {
       id: 'experience',
       title: 'Experience',
       description: 'Research and industry exposure',
-      gradient: '/gradients/experience.svg',
+      gradient: `${basePath}/gradients/experience.svg`,
       glowColor: '#4f7cff',
       content: <ExperiencePage />,
     },
@@ -56,7 +57,7 @@ export default function Home() {
       id: 'skills',
       title: 'Skills',
       description: 'Tools and technologies I use',
-      gradient: '/gradients/skills.svg',
+      gradient: `${basePath}/gradients/skills.svg`,
       glowColor: '#ff2e63',
       content: <SkillsPage />,
     },
@@ -64,7 +65,7 @@ export default function Home() {
       id: 'projects',
       title: 'Projects',
       description: 'Selected technical work',
-      gradient: '/gradients/projects.svg',
+      gradient: `${basePath}/gradients/projects.svg`,
       glowColor: '#1a4fff',
       content: <ProjectsPage />,
     },
@@ -72,7 +73,7 @@ export default function Home() {
       id: 'contact',
       title: 'Contact',
       description: "Let's get in touch",
-      gradient: '/gradients/contact.svg',
+      gradient: `${basePath}/gradients/contact.svg`,
       glowColor: '#b5179e',
       content: <ContactPage />,
     },
@@ -80,6 +81,3 @@ export default function Home() {
 
   return <PageWrapper pages={pages} />
 }
-
-
-
